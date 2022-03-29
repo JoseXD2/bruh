@@ -348,6 +348,8 @@ class PlayState extends MusicBeatState
 				dialogue = CoolUtil.coolTextFile(Paths.txt('roses/rosesDialogue'));
 			case 'thorns':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('thorns/thornsDialogue'));
+			case 'sky-jump':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('sky-jump/texto'));
 		}
 
 		switch(SONG.stage)
@@ -618,6 +620,73 @@ class PlayState extends MusicBeatState
 						add(bgGirls);
 					}
 			}
+			case 'Pou1':
+				{
+						curStage = 'Pou1';
+						defaultCamZoom = 0.7;
+	
+						var bg:FlxSprite = new FlxSprite(-600, -300).loadGraphic(Paths.image('pou/Pou2'));
+						bg.antialiasing = true;
+						bg.scrollFactor.set(0.1, 0.1);
+						bg.active = false;
+						add(bg);
+	
+						var bg:FlxSprite = new FlxSprite(-500, -250).loadGraphic(Paths.image('pou/Pou1'));
+						bg.antialiasing = true;
+						bg.scrollFactor.set(0.9, 0.9);
+						bg.active = false;
+						add(bg);
+	
+						var stageFront:FlxSprite = new FlxSprite(-650, 600).loadGraphic(Paths.image('pou/Pou3'));
+						stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
+						stageFront.updateHitbox();
+						stageFront.antialiasing = true;
+						stageFront.scrollFactor.set(0.9, 0.9);
+						stageFront.active = false;						
+						add(stageFront);
+			}
+			case 'Hill':
+				{
+						curStage = 'Hill';
+						defaultCamZoom = 0.55;
+	
+						var bg:FlxSprite = new FlxSprite(-600, -300).loadGraphic(Paths.image('pou/Pou2'));
+						bg.antialiasing = true;
+						bg.scrollFactor.set(0.1, 0.1);
+						bg.active = false;
+						add(bg);
+	
+						var Colinas:FlxSprite = new FlxSprite(-5074, 124);
+						Colinas.antialiasing = true;
+						Colinas.frames = Paths.getSparrowAtlas('hill/Colinas');
+						Colinas.animation.addByPrefix('idle', 'Colinas', 96);
+						Colinas.animation.play('idle');
+						add(Colinas);
+	
+						var Piso:FlxSprite = new FlxSprite(-5168, 311);
+						Piso.antialiasing = true;
+						Piso.frames = Paths.getSparrowAtlas('hill/Piso');
+						Piso.animation.addByPrefix('idle', 'Piso', 24);
+						Piso.animation.play('idle');
+						add(Piso);
+				}
+			case 'Pouexeescenario':
+				{
+						curStage = 'Pouexeescenario';
+						defaultCamZoom = 0.7;
+	
+						var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('pouexe/Pou2'));
+						bg.antialiasing = true;
+						bg.scrollFactor.set(0.1, 0.1);
+						bg.active = false;
+						add(bg);
+	
+						var bg:FlxSprite = new FlxSprite(-500, -250).loadGraphic(Paths.image('pouexe/Pou1'));
+						bg.antialiasing = true;
+						bg.scrollFactor.set(0.9, 0.9);
+						bg.active = false;
+						add(bg);
+			}
 			case 'schoolEvil':
 			{
 					curStage = 'schoolEvil';
@@ -700,6 +769,37 @@ class PlayState extends MusicBeatState
 						stageCurtains.active = false;
 	
 						add(stageCurtains);
+			}
+			case 'referencezip' | 'escenario':
+			{
+						defaultCamZoom = 0.9;
+						curStage = 'escenario';
+						var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('escenario/sol'));
+						bg.setGraphicSize(Std.int(bg.width * 1.1));
+						bg.updateHitbox();
+						bg.antialiasing = true;
+						bg.scrollFactor.set(0, 0);
+						bg.active = false;
+						add(bg);
+	
+						var stageFront:FlxSprite = new FlxSprite(-600, -400).loadGraphic(Paths.image('escenario/picos'));
+						stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
+						stageFront.updateHitbox();
+						stageFront.antialiasing = true;
+						stageFront.scrollFactor.set(0.9, 0.9);
+						stageFront.active = false;
+						add(stageFront);
+	
+						var piso:FlxSprite = new FlxSprite(-650, 600);
+						piso.frames = Paths.getSparrowAtlas('escenario/floor');
+						piso.animation.addByPrefix('brillo', "Suelo instancia 1", 24, true);
+						piso.animation.play('brillo');
+						piso.antialiasing = true;
+						piso.scrollFactor.set(1, 1);
+						piso.setGraphicSize(Std.int(piso.width * 1));
+						piso.updateHitbox();
+
+						add(piso);
 				}
 			default:
 			{
@@ -769,6 +869,15 @@ class PlayState extends MusicBeatState
 				dad.y += 130;
 			case 'dad':
 				camPos.x += 400;
+			case 'Pou':
+					camPos.x += 400;
+					dad.y += 340;
+			case 'Pou2':
+					camPos.x += 400;
+					dad.y += 340;
+			case 'PouExe':
+					camPos.x += 400;
+					dad.y += 340;
 			case 'pico':
 				camPos.x += 600;
 				dad.y += 300;
@@ -805,6 +914,22 @@ class PlayState extends MusicBeatState
 
 			case 'mall':
 				boyfriend.x += 200;
+			case 'Pou1':
+					boyfriend.x += 200;
+					boyfriend.y += 100;
+					dad.x += 0;
+					dad.y += 100;
+			case 'Hill':
+					boyfriend.x += -250;
+					boyfriend.y += 100;
+					dad.x += -800;
+					dad.y += 175;
+			case 'Pouexeescenario':
+					boyfriend.x += 200;
+					boyfriend.y += 100;
+					dad.x += 0;
+					dad.y += 100;
+					gf.y += 255;
 
 			case 'mallEvil':
 				boyfriend.x += 320;
@@ -1597,7 +1722,39 @@ class PlayState extends MusicBeatState
 							babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
 							babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
 						}
-
+                                case 'circle':
+						babyArrow.frames = Paths.getSparrowAtlas('escenario/NOTE_assets');
+						babyArrow.animation.addByPrefix('green', 'arrowUP');
+						babyArrow.animation.addByPrefix('blue', 'arrowDOWN');
+						babyArrow.animation.addByPrefix('purple', 'arrowLEFT');
+						babyArrow.animation.addByPrefix('red', 'arrowRIGHT');
+		
+						babyArrow.antialiasing = true;
+						babyArrow.setGraphicSize(Std.int(babyArrow.width * 0.7));
+		
+						switch (Math.abs(i))
+						{
+							case 0:
+								babyArrow.x += Note.swagWidth * 0;
+								babyArrow.animation.addByPrefix('static', 'arrowLEFT');
+								babyArrow.animation.addByPrefix('pressed', 'left press', 24, false);
+								babyArrow.animation.addByPrefix('confirm', 'left confirm', 24, false);
+							case 1:
+								babyArrow.x += Note.swagWidth * 1;
+								babyArrow.animation.addByPrefix('static', 'arrowDOWN');
+								babyArrow.animation.addByPrefix('pressed', 'down press', 24, false);
+								babyArrow.animation.addByPrefix('confirm', 'down confirm', 24, false);
+							case 2:
+								babyArrow.x += Note.swagWidth * 2;
+								babyArrow.animation.addByPrefix('static', 'arrowUP');
+								babyArrow.animation.addByPrefix('pressed', 'up press', 24, false);
+								babyArrow.animation.addByPrefix('confirm', 'up confirm', 24, false);
+							case 3:
+								babyArrow.x += Note.swagWidth * 3;
+								babyArrow.animation.addByPrefix('static', 'arrowRIGHT');
+								babyArrow.animation.addByPrefix('pressed', 'right press', 24, false);
+								babyArrow.animation.addByPrefix('confirm', 'right confirm', 24, false);
+							}
 				default:
 					babyArrow.frames = Paths.getSparrowAtlas('NOTE_assets');
 					babyArrow.animation.addByPrefix('green', 'arrowUP');
@@ -2095,6 +2252,12 @@ class PlayState extends MusicBeatState
 				}
 				#end
 				camFollow.setPosition(dad.getMidpoint().x + 150 + offsetX, dad.getMidpoint().y - 100 + offsetY);
+					if (curStage == 'Hill')
+					switch (boyfriend.curCharacter)
+				    {
+						case 'bf-car':
+						    camFollow.y = boyfriend.getMidpoint().y - 450;
+					}		
 				#if windows
 				if (luaModchart != null)
 					luaModchart.executeState('playerTwoTurn', []);
