@@ -320,8 +320,6 @@ class StoryMenuState extends MusicBeatState
 			PlayState.goods = 0;
 			PlayState.
 
-			PlayState.storyWeek = curWeek;
-			PlayState.campaignScore = 0;
 			new FlxTimer().start(1, function(tmr:FlxTimer)
 			{
 				LoadingState.loadAndSwitchState(new PlayState(), true);
