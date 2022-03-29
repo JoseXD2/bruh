@@ -287,11 +287,11 @@ class TitleState extends MusicBeatState
 		if (pressedEnter && !transitioning && skippedIntro)
 			{
 				#if !switch
-				NGio.unlockMedal(60960);
+				
 	
 				// If it's Friday according to da clock
 				if (Date.now().getDay() == 5)
-					NGio.unlockMedal(61034);
+					N
 				#end
 	
 				titleText.animation.play('press');
