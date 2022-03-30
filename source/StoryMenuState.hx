@@ -320,7 +320,7 @@ class StoryMenuState extends MusicBeatState
 			PlayState.goods = 0;
 			PlayState.
 
-			new FlxTimer().start(1, function(tmr:FlxTimer)
+			
 			{
 				LoadingState.loadAndSwitchState(new PlayState(), true);
 			});
